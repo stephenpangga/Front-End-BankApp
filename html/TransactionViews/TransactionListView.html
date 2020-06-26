@@ -12,7 +12,7 @@
             success: data => {
                 data.forEach(transaction => {
                     $("#transaction").append(`Sender: ${transaction.sender.iban}: ${transaction.sender.balance}<br> Amount:${transaction.amount} </br> 
-                    Recipient: ${transaction.recipient.iban} </br>`);
+                    Recipient: ${transaction.recipient.iban} </br> </br>`);
                 });
             }
         });
