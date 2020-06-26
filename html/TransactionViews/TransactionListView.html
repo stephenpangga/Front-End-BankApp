@@ -1,5 +1,6 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
+    
     $(document).ready(function () {
         //var url = "https://bankingappv2.herokuapp.com/api/transactions";
         //var url="https://banking-appv3.herokuapp.com/api/users";
@@ -14,24 +15,10 @@
                     Recipient: ${transaction.recipient.iban} </br>`);
                 });
             }
-        })
+        });
+    })
 
-//post
-        $.ajax({
-            type: 'POST',
-            url: 'https://banking-appv3.herokuapp.com/api/transactions',
-            contentType: 'application/json',
-            data: JSON.stringify({
-                "amount": 100,
-                "transactionType": "transfer"
-            }),
-            success: data => {
-                data.forEach(transaction => {
-                    $("#transaction").append(`Balance of account ${transaction.sender.iban}: ${transaction.sender.balance}<br>`);
-                });
-            }
-        })
-    });
+
 </script>
 
 <h1>Recent Transaction</h1>
