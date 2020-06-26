@@ -1,0 +1,43 @@
+#user{
+    padding: 10px;
+    border:0;
+    width:665px;
+    font-size:10pt;
+    font-family:Arial;
+    color:#656668;
+    display: table-cell;
+    line-height: 20px;
+}
+
+table{
+    width: 60%;
+    border: 0;
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+
+body {
+    padding: 20px;
+}
+button {
+    height: 30px;
+    font-weight: bold;
+    padding: 10px;
+    background: salmon;
+    border: none;
+}
+button:hover {
+    background: lightsalmon;
+}
+
+.userline {
+    padding: 5px;
+}
+  
+#user {
+    display: grid;
+    grid-template-columns: repeat(7, max-content);
+    gap: 10px;
+}
