@@ -17,7 +17,7 @@ $(document).ready(() => {
                 //window.location.replace('dashboard.html');
             },
             error: error => {
-                $('#status').html(`Something went wrong (${error.toString()})`);
+                $('#status').html(`Something went wrong, please try again (${error.toString()})`)
             }
         });
     });
