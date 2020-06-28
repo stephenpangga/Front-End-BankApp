@@ -13,8 +13,8 @@ $(document).ready(() => {
             }),
             success: login => {
                 sessionStorage.setItem("token", login.token);
-                $('#token').html('Successfully logged in');
-                window.location.replace('dashboard.html');
+                $('#status').html('Successfully logged in');
+                //window.location.replace('dashboard.html');
             }
         });
     });
