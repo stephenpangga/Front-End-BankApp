@@ -1,6 +1,9 @@
 "use strict";
 //@ts-check
 
+// const apiURL = `http://localhost:8090/api/users`;
+const apiURL = `https://projectcodegenerationbankapp.herokuapp.com/api/users`;
+
 var userTable;
 /**
  * HTML button to add a user
@@ -101,7 +104,7 @@ $(document).ready(function () {
 async function loadUsers() {
     // Clean the list
     userTable.innerHTML = "";
-    const url = "http://localhost:8090/api/users";
+    const url = apiURL;
     const res = await fetch(url);
     const data = await res.json();
     data.forEach(addUserRowAndButtons);
@@ -204,7 +207,7 @@ function addTableRow(user) {
 }
 
 function putUserData(userData) {
-    const url = `http://localhost:8090/api/users/${userData.id}`;
+    const url = `${apiURL}/${userData.id}`;
     console.log(url);
     console.log(userData);
     return fetch(url, {
@@ -217,7 +220,7 @@ function putUserData(userData) {
 }
 
 function deleteUserData(id) {
-    const url = `http://localhost:8090/api/users/${id}`;
+    const url = `${apiURL}/${id}`;
     console.log(url);
     console.log(id);
     return fetch(url, {
@@ -229,7 +232,7 @@ function deleteUserData(id) {
 }
 
 function addNewUser(user) {
-    return fetch('http://localhost:8090/api/users', {
+    return fetch(apiURL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -248,7 +251,7 @@ function addNewUser(user) {
 async function loadUser(id){
     // Clean the list
     userTable.innerHTML = "";
-    const url = `http://localhost:8090/api/users/${id}`;
+    const url = `${apiURL}/${id}`;
     const res = await fetch(url);
     // Get user data in JSON format
     const user = await res.json();
@@ -258,7 +261,7 @@ async function loadUser(id){
 // function addNewUser(user) {
 //     $.ajax({
 //         type: 'POST',
-//         url: 'http://localhost:8090/api/users',
+//         url: apiURL,
 //         contentType: 'application/json',
 //         data: JSON.stringify(user)
 //     })
