@@ -22,16 +22,18 @@ $(document).ready(() => {
         e.preventDefault();
         $.ajax({
             type: 'GET',
-            url: baseUrl + '/accounts' + $('#transaction-recipient'),
+            url: baseUrl + '/accounts/' + $('#transaction-recipient').val(),
+            headers: { "Authorization": sessionStorage.getItem('token') },
             success: recipient => {
                 $.ajax({
-                    url: baseUrl + '/transactions/' + sessionStorage.getItem('token'),
+                    url: baseUrl + '/login/' + sessionStorage.getItem('token'),
                     type: 'GET',
                     headers: { "Authorization": sessionStorage.getItem('token') },
                     success: user => {
                         $.ajax({
                             type: 'POST',
                             url: baseUrl + '/transactions',
+                            headers: { "Authorization": sessionStorage.getItem('token') },
                             contentType: 'application/json',
                             data: JSON.stringify({
                                 sender: {
@@ -52,25 +54,25 @@ $(document).ready(() => {
                                     accountType: "current"
                                 },
                                 recipient: recipient,
-                                amount: $('#transaction-amount'),
+                                amount: $('#transaction-amount').val(),
                                 transactionType: 'transfer',
                                 userPerforming: user
                             }),
                             success: () => {
-                                $('#status').html(`€${$('#transaction-amount')} was successfully tranfered to ${$('#transaction-recipient')}`);
+                                $('#status').html(`€${$('#transaction-amount').val()} was successfully tranfered to ${$('#transaction-recipient').val()}`);
                             },
                             error: xhr => {
-                                $('#transactions').html(`Something went wrong, please try again (HTTP Status Code ${xhr.status})`);
+                                $('#status').html(`Something went wrong, please try again (HTTP Status Code ${xhr.status})`);
                             }
                         });
                     },
                     error: xhr => {
-                        $('#transactions').html(`Something went wrong, please try again (HTTP Status Code ${xhr.status})`);
+                        $('#status').html(`Something went wrong, please try again (HTTP Status Code ${xhr.status})`);
                     }
                 });
             },
             error: xhr => {
-                $('#transactions').html(`Something went wrong, please try again (HTTP Status Code ${xhr.status})`);
+                $('#status').html(`Something went wrong, please try again (HTTP Status Code ${xhr.status})`);
             }
         });
     });
