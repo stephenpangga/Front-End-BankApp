@@ -15,6 +15,9 @@ $(document).ready(() => {
                 sessionStorage.setItem("token", login.token);
                 $('#status').html('Successfully logged in');
                 //window.location.replace('dashboard.html');
+            },
+            error: error => {
+                $('#status').html(`Something went wrong, please try again (${error.toString()})`)
             }
         });
     });
