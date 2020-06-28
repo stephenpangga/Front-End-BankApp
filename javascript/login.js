@@ -1,5 +1,5 @@
-//const baseUrl = 'https://projectcodegenerationbankapp.herokuapp.com/api';
-const baseUrl = 'http://localhost:8090/api';
+const baseUrl = 'https://projectcodegenerationbankapp.herokuapp.com/api';
+
 $(document).ready(() => {
     $('#login-form').submit(e => {
         e.preventDefault();
