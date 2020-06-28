@@ -9,6 +9,19 @@
     <body>
         <h1>Recent Transactions</h1>
         <p id="transactions"></p>
+
+        <h1> Transfer Money </h1>
+
+        <form id="transaction-form">
+            <label for="transaction-amount">Amount</label>
+            <input type="number" id="transaction-amount" step="0.01" min="0" value="0.00">
+            <label for="transaction-recipient">Recipient</label>
+            <input type="text" id="transaction-recipient" pattern="^NL\d{2}INHO0\d{9}$" placeholder="NL69INHO0123456789">
+            <input type="submit" value="Submit"> 
+        </form>
+
+        <p id="status"></p>
+
         <a id="dashboard-return" href="dashboard.html">Return to dashboard</a>
     </body>
 </html>
