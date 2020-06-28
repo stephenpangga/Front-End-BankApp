@@ -9,6 +9,7 @@ var userTable;
 
 var btnAddUser;
 var btnFindUser;
+var btnShowUsers;
 var tUser;
 /**
  * Describes the application mode and can be either: "allUsers" or "specificUser"
@@ -21,6 +22,7 @@ $(document).ready(function () {
     userTable = document.getElementById("user");
     btnAddUser = document.getElementById("btnAddUser");
     btnFindUser = document.getElementById("btnFindUser");
+    btnShowUsers = document.getElementById("btnShowUsers");
     tUser = document.getElementById("tUser");
     loadUsers();
 
@@ -31,7 +33,13 @@ $(document).ready(function () {
         const id = tUser.value;
         loadUser(id);
         // Show the "show all users" button
+        btnShowUsers.style.display = null;
         // Hide the "new user" button
+        btnAddUser.style.display = "none";
+    }
+
+    btnShowUsers.onclick = () => {
+        loadUsers();
     }
 
     btnAddUser.onclick = () => {
@@ -97,6 +105,9 @@ async function loadUsers() {
     const res = await fetch(url);
     const data = await res.json();
     data.forEach(addUserRowAndButtons);
+    btnAddUser.style.display = null;
+    btnShowUsers.style.display = "none";
+    tUser.value = "";
 }
 
 /**
