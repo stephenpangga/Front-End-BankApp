@@ -1,10 +1,10 @@
 #user{
     padding: 10px;
-    border:0;
-    width:665px;
-    font-size:10pt;
-    font-family:Arial;
-    color:#656668;
+    border: 0;
+    width: 665px;
+    font-size: 10pt;
+    font-family: Arial;
+    color: #656668;
     display: table-cell;
     line-height: 20px;
 }

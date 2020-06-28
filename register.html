@@ -1,0 +1,24 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bank App - Register</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script src="scripts/register.js"></script>
+    </head>
+    <body>
+        <form id="register-form">
+            <label for="firstname-textbox">First Name</label>
+            <input type="text" id="firstname-textbox" required="required" placeholder="John">
+            <label for="lastname-textbox">Last Name</label>
+			<input type="text" id="lastname-textbox" required="required" placeholder="Doe">
+			<label for="email-textbox">Email</label>
+			<input type="text" id="email-textbox" required="required" placeholder="john.doe@inholland.nl">
+			<label for="password-textbox">Password</label>
+			<input type="password" id="password-textbox" required="required">
+			<input type="submit" value="Register">
+		</form>
+		<a href="login.html">Already have an account? Login here</a>
+		<p id="status"></p>
+    </body>
+</html>
