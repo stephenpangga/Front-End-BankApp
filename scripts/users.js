@@ -1,8 +1,7 @@
 "use strict";
 //@ts-check
 
-const apiURL = `http://localhost:8090/api/users`;
-//const apiURL = `https://projectcodegenerationbankapp.herokuapp.com/api/users`;
+const apiURL = `https://projectcodegenerationbankapp.herokuapp.com/api/users`;
 
 var userTable;
 /**

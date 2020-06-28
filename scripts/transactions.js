@@ -7,6 +7,7 @@ $(document).ready(() => {
         type: 'GET',
         headers: { "Authorization": sessionStorage.getItem('token') },
         success: transactions => {
+            $('#transactions').html('');
             transactions.forEach(transaction => {
                 $('#transactions').append(`Sender: ${transaction.sender.iban}: ${transaction.sender.balance}<br> Amount: €${transaction.amount} </br> 
                 Recipient: ${transaction.recipient.iban} </br> </br>`);
