@@ -12,12 +12,16 @@ $(document).ready(() => {
                 password: $('#password-textbox').val()
             }),
             success: login => {
-                sessionStorage.setItem("token", login.token);
-                $('#status').html('Successfully logged in');
-                //window.location.replace('dashboard.html');
+                if (login.token) {
+                    sessionStorage.setItem("token", login.token);
+                    $('#status').html('Successfully logged in');
+                    window.location.replace('dashboard.html');
+                } else {
+                    $('#status').html('Unknown credentials, please try again');
+                }
             },
             error: error => {
-                $('#status').html(`Something went wrong, please try again (${error.toString()})`)
+                $('#status').html(`Something went wrong, please try again (${error.toString()})`);
             }
         });
     });
