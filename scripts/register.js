@@ -16,8 +16,8 @@ $(document).ready(() => {
             success: user => {
                 $('#status').html(`Successfully registered ${user.firstName} ${user.lastName}. You can now login using ${user.email} and your chosen password.`);
             },
-            error: error => {
-                $('#status').html(`Something went wrong, please try again (${error.toString()})`)
+            error: xhr => {
+                $('#transactions').html(`Something went wrong, please try again (HTTP Status Code ${xhr.status})`);
             }
         });
     });

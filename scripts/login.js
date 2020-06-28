@@ -20,8 +20,8 @@ $(document).ready(() => {
                     $('#status').html('Unknown credentials, please try again');
                 }
             },
-            error: error => {
-                $('#status').html(`Something went wrong, please try again (${error.toString()})`);
+            error: xhr => {
+                $('#transactions').html(`Something went wrong, please try again (HTTP Status Code ${xhr.status})`);
             }
         });
     });
