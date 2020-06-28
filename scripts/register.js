@@ -14,7 +14,7 @@ $(document).ready(() => {
                 lastName: $('#lastname-textbox').val()
             }),
             success: user => {
-                $('#status').html(`Successfully registered ${user.firstName} ${user.lastName}. You can <a href="login.html">login here<a> using ${user.email} and your chosen password.`);
+                $('#status').html(`Successfully registered ${user.firstName} ${user.lastName}. You can now login using ${user.email} and your chosen password.`);
             },
             error: error => {
                 $('#status').html(`Something went wrong, please try again (${error.toString()})`)
