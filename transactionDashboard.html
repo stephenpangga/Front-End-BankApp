@@ -1,0 +1,67 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bank App - Transactions</title>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="scripts/auth-check.js"></script>
+        <!--<script src ="script/dashboard.js"></script>-->
+        <script>
+            const baseUrl = 'https://projectcodegenerationbankapp.herokuapp.com/api';
+            //const baseUrl='http://localhost:8090/api';
+
+                $(document).ready(() => {
+                    $.ajax({
+                        url: baseUrl + '/login/' + sessionStorage.getItem('token'),
+                        type: 'GET',
+                        headers: { "Authorization": sessionStorage.getItem('token') },
+                        success: users =>
+                        {
+                            //console.log(users);
+                            // Fetch accounts of the login user
+                            $.ajax({
+                                url: baseUrl + '/users/' + users.id + '/accounts',
+                                //url: baseUrl + '/users/'+ $('#user-id').val() + '/accounts',
+                                type: 'GET',
+                                headers: { "Authorization": sessionStorage.getItem('token') },
+                                success: accounts => {
+                                    $('#accounts').html('');
+                                    accounts.forEach(accounts => {
+                                        $('#accounts').append(
+                                            `<button id = "button-${accounts.iban}">
+                                            IBAN: ${accounts.iban} <br>
+                                            Balance: ${accounts.balance} <br>
+                                            Bank Type: ${accounts.accountType} <br>
+                                            </button> <br>`
+                                            );
+                                        //Pass the Iban Number
+                                        $(`#button-${accounts.iban}`).click(()=> {
+                                            window.location.replace(`transactions.html?iban=${accounts.iban}`);
+                                            console.log(`Do something with ${accounts.iban}`);
+                                            console.log(account_token);
+                                        });
+                                    });
+                                },
+                                error: xhr => {
+                                    $('#accounts').html(`Something went wrong, please try again (HTTP Status Code ${xhr.status})`);
+                                }
+                            });
+                        }
+                    });                
+                });
+        </script>
+        
+    </head>
+
+    <body>
+        <h1>Select Account</h1>
+
+        <p id = "accounts"> </p>
+        
+        <a id="dashboard-return" href="dashboard.html">Return to dashboard</a>
+    </body>
+</html>
+
+
+
+
