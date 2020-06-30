@@ -9,7 +9,7 @@ $(document).ready(() => {
         success: transactions => {
             $('#transactions').html('');
             transactions.forEach(transaction => {
-                $('#transactions').append(`Sender: ${transaction.sender.iban}: ${transaction.sender.balance}<br> Amount: €${transaction.amount} </br> 
+                $('#transactions').append(`Sender: ${transaction.sender.iban}: Current Balance: ${transaction.sender.balance}<br> Amount: €${transaction.amount} </br> 
                 Recipient: ${transaction.recipient.iban} </br> </br>`);
             });
         },
