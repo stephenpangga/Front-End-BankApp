@@ -104,7 +104,14 @@ async function loadUsers() {
     // Clean the list
     userTable.innerHTML = "";
     const url = apiURL;
-    const res = await fetch(url);
+    
+    // We need to get the token so we do not get 403 error
+    const token = sessionStorage.getItem('token');
+    const res = await fetch(url, {
+        headers: {
+            Authorization: token
+        }
+    });
     const data = await res.json();
     data.forEach(addUserRowAndButtons);
     btnAddUser.style.display = null;
@@ -247,7 +254,7 @@ function addNewUser(user) {
  * The result is an object 
  * Use this object to fill the list with one row
  */
-async function loadUser(id){
+async function loadUser(id) {
     // Clean the list
     userTable.innerHTML = "";
     const url = `${apiURL}/${id}`;
