@@ -216,10 +216,12 @@ function putUserData(userData) {
     const url = `${apiURL}/${userData.id}`;
     console.log(url);
     console.log(userData);
+    const token = sessionStorage.getItem('token');
     return fetch(url, {
         method: 'PUT',
         headers: {
-            'Content-Type': 'application/json',
+            'Authorization' : token,
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(userData)
     });
@@ -229,10 +231,12 @@ function deleteUserData(id) {
     const url = `${apiURL}/${id}`;
     console.log(url);
     console.log(id);
+    const token = sessionStorage.getItem('token');
     return fetch(url, {
         method: 'DELETE',
         headers: {
-            'Content-Type': 'application/json',
+            'Authorization' : token,
+            'Content-Type': 'application/json'
         }
     });
 }
@@ -258,7 +262,18 @@ async function loadUser(id) {
     // Clean the list
     userTable.innerHTML = "";
     const url = `${apiURL}/${id}`;
-    const res = await fetch(url);
+    // We need to get the token so we do not get 403 error
+    const token = sessionStorage.getItem('token');
+    const res = await fetch(url, {
+        headers: {
+            Authorization: token
+        }
+    });
+
+
+
+
+
     // Get user data in JSON format
     const user = await res.json();
     addUserRowAndButtons(user);
