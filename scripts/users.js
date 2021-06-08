@@ -190,6 +190,11 @@ function addUserRowAndButtons(user) {
  * @param {any} user 
  */
 function addTableRow(user) {
+    //Id
+    const divId = document.createElement("div");
+    divId.innerHTML = user.id || '';
+    userTable.appendChild(divId);
+    //Email
     const divEmail = document.createElement("div");
     divEmail.innerHTML = user.email;
     userTable.appendChild(divEmail);

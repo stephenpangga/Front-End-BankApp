@@ -38,6 +38,6 @@ button:hover {
   
 #user {
     display: grid;
-    grid-template-columns: repeat(7, max-content);
+    grid-template-columns: repeat(8, max-content);
     gap: 10px;
 }
